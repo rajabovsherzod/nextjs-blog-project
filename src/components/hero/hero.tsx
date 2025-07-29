@@ -5,6 +5,7 @@ import "react-multi-carousel/lib/styles.css";
 import Image from "next/image";
 import { BlogService } from '@/services/blog.service';
 import { useQuery } from '@tanstack/react-query'
+import { calculateEstimatedTimeToRead } from '@/helpers/time.format'
 
 // Dynamically import Carousel with SSR disabled
 const Carousel = dynamic(
@@ -216,14 +217,16 @@ export default function Hero() {
                       color: 'rgba(255,255,255,0.7)',
                       fontSize: '0.75rem',
                       lineHeight: 1.4,
-                      display: 'block'
+                      display: 'block',
+                      marginTop: '5px'
                     }}
                   >
                     {new Date(item.createdAt).toLocaleDateString('en-EN', {
                       year: 'numeric',
                       month: 'short',
                       day: 'numeric'
-                    })}
+                    })} 
+                     {' •'} {calculateEstimatedTimeToRead(item.description.text)} min read
                   </Typography>
                 </Box>
               </Box>

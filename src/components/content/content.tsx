@@ -6,6 +6,7 @@ import { useBlogStore } from "@/store/blogs.store";
 import { BlogService } from '@/services/blog.service'
 import { useQuery } from '@tanstack/react-query'
 import { BlogsType } from "@/interfaces/blogs.interface";
+import { calculateEstimatedTimeToRead } from '@/helpers/time.format'
 
 const Content = () => {
   const { data } = useQuery({
@@ -35,7 +36,6 @@ const Content = () => {
                     gap: 2,
                     marginTop: '20px',
                     background: 'rgba(255,255,255,0.06)',
-                    borderRadius: '24px',
                     padding: '8px 16px',
                     width: 'fit-content'
                   }}
@@ -73,6 +73,7 @@ const Content = () => {
                         month: 'short',
                         day: 'numeric'
                       })}
+                      {' •'} {calculateEstimatedTimeToRead(item.description.text)} min read
                     </Typography>
                   </Box>
                 </Box>

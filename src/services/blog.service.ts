@@ -12,6 +12,9 @@ export const BlogService = {
           id
           slug
           title
+          description {
+            text
+          }
           createdAt
           image {
             url
@@ -41,6 +44,9 @@ export const BlogService = {
           id
           slug
           title
+          description {
+            text
+          }
           createdAt
           image {
             url

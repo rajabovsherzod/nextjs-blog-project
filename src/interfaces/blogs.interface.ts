@@ -3,6 +3,9 @@ export interface BlogsType {
     id: string;
     slug: string;
     title: string;
+    description: {
+      text: string
+    }
     createdAt: string;
     image: { url: string };
     author: {
