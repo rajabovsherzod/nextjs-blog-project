@@ -19,6 +19,7 @@ import { navItems } from "@/constants/navbar-items";
 import CloseIcon from "@mui/icons-material/Close";
 import BookIcon from "@mui/icons-material/Book";
 import Link from "next/link";
+import { CustomLink } from '@/components';
 
 interface Props {
   window?: () => Window;
@@ -41,10 +42,14 @@ const Navbar = ({ window }: Props) => {
           paddingX: "20px",
         }}
       >
-        <Box sx={{ my: 2, display: "flex", alignItems: "center", gap: "5px" }}>
-          <BookIcon />
-          <Typography variant="h6">ShareMe</Typography>
-        </Box>
+        
+          <Box sx={{ my: 2, display: "flex", alignItems: "center", gap: "5px" }}>
+            <Link href="/">
+              <BookIcon />
+              <Typography variant="h6">ShareMe</Typography>
+            </Link>
+          </Box>
+        
         <CloseIcon />
       </Box>
       <Divider />
@@ -52,7 +57,7 @@ const Navbar = ({ window }: Props) => {
         {navItems.map((item) => (
           <ListItem key={item.route} disablePadding>
             <ListItemButton
-              component={Link}
+              component={CustomLink}
               href={item.route}
               sx={{ textAlign: "center" }}
             >
@@ -96,10 +101,14 @@ const Navbar = ({ window }: Props) => {
               display: { xs: "none", sm: "flex" },
             }}
           >
-            <BookIcon />
-            <Typography variant="h6" component="div">
-              ShareMe
-            </Typography>
+            <CustomLink href='/'>
+              <Box sx={{ display: 'flex', gap: '10px', alignItems: 'center'}}>
+                <BookIcon />
+                <Typography variant="h6" component="div">
+                  ShareMe
+                </Typography>
+              </Box>
+            </CustomLink>
           </Box>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (

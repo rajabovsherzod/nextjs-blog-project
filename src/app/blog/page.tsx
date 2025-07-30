@@ -1,9 +1,16 @@
 import React from 'react'
+import type { Metadata } from 'next';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import { Content } from '@/components';
 import { BlogService } from '@/services/blog.service';
 import { Divider, Typography } from '@mui/material';
+
+export const metadata: Metadata = {
+    title: 'All Blogs',
+    description: 'Explore a wide variety of articles and posts on different topics shared by our community.',
+};
+
 export default async function BlogsPage() {
     const { blogs } = await BlogService.getAllBlogs();
     const half = Math.ceil(blogs.length / 2);

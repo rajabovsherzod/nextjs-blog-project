@@ -155,5 +155,18 @@ export const BlogService = {
     `
     const result = await request<{ blogs: BlogsType[]}>(endpoint, query, { slug })
     return result.blogs
+  },
+
+  async getCategory(slug: string) {
+    const query = gql`
+      query GetCategory($slug: String!) {
+        category(where: { slug: $slug }) {
+          label
+          slug
+        }
+      }
+    `
+    const result = await request<{ category: CategoryType}>(endpoint, query, { slug })
+    return result.category
   }
 };

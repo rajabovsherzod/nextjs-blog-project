@@ -1,4 +1,5 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+@import 'nprogress/nprogress.css';
 
 :root {
   --background: #0a0a0a;
@@ -44,4 +45,15 @@ html,
   .main {
     padding-top: 0;
   }
+}
+
+/* NProgress uchun maxsus stillar */
+#nprogress .bar {
+  height: 4px !important;
+  background: 'blue' !important; /* Test uchun qizil rang */
+  z-index: 9999 !important; /* Barcha elementlardan yuqorida turishi uchun */
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px 'blue', 0 0 5px 'blue' !important;
 }

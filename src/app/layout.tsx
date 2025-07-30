@@ -3,8 +3,7 @@ import "./globals.css"
 import type { Metadata } from "next"
 import { Roboto } from "next/font/google"
 import { Providers } from "./providers"
-import Navbar from "@/components/navbar/navbar"
-import Footer from "@/components/footer/footer"
+import { Navbar, Footer, ProgressBar } from '@/components';
 import { Box } from "@mui/material"
 
 const roboto = Roboto({
@@ -14,8 +13,11 @@ const roboto = Roboto({
 })
 
 export const metadata: Metadata = {
-  title: "My App",
-  description: "My Next.js App with MUI and Roboto",
+  title: {
+    template: '%s | ShareMe',
+    default: 'ShareMe - Blog for Everyone',
+  },
+  description: "The best blog platform for sharing and discovering new ideas and stories.",
 }
 
 export default function RootLayout({
@@ -28,6 +30,7 @@ export default function RootLayout({
       <body className="body">
         <Providers>
           <Navbar />
+          <ProgressBar />
           <Box
             className="main"
             sx={{

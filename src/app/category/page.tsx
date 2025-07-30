@@ -1,9 +1,15 @@
 import React from 'react';
+import type { Metadata } from 'next'
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import { BlogService } from '@/services/blog.service';
 import { Button, Divider, Typography } from '@mui/material';
 import Link from 'next/link';
+
+export const metadata: Metadata = {
+    title: 'All Categories',
+    description: 'Browse all available categories and find topics that interest you.',
+};
 
 export default async function CategoryPage() {
     const { categories } = await BlogService.getCategories();

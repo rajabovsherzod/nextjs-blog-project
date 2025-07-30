@@ -2,6 +2,12 @@ import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import { Content, Hero, Sidebar } from '@/components';
 import { BlogService } from '@/services/blog.service';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Home',
+  description: 'Welcome to ShareMe, the best platform to read and share articles about technology, programming, and more.',
+};
 
 export default async function Home() {
   const { blogs: latestBlogs } = await BlogService.getLatestBlogs();

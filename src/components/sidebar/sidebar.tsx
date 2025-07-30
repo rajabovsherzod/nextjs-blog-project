@@ -4,6 +4,7 @@ import { Box, Typography, Button, Divider, Avatar } from "@mui/material";
 import Image from "next/image";
 import { SidebarProps } from './sidebar.props';
 import Link from "next/link";
+import { CustomLink } from '@/components';
 
 const Sidebar = ({ latestBlogs, categories }: SidebarProps) => {
   return (
@@ -22,7 +23,7 @@ const Sidebar = ({ latestBlogs, categories }: SidebarProps) => {
           </Typography>
           <Box sx={{ display: "flex", flexDirection: "column", gap: "15px" }}>
             {latestBlogs.map((item) => (
-              <Link href={`/blog/${item.slug}`} key={item.title}>
+              <CustomLink href={`/blog/${item.slug}`} key={item.title}>
                   <Fragment key={item.title}>
                 <Box
                   sx={{
@@ -124,7 +125,7 @@ const Sidebar = ({ latestBlogs, categories }: SidebarProps) => {
                   }}
                 />
               </Fragment>
-              </Link>
+              </CustomLink>
             ))}
           </Box>
         </Box>
@@ -135,7 +136,7 @@ const Sidebar = ({ latestBlogs, categories }: SidebarProps) => {
           >
             {categories.map((nav) => (
               <Fragment key={nav.slug}>
-                <Link href={`/category/${nav.slug}`}>
+                <CustomLink href={`/category/${nav.slug}`}>
                   <Button
                     fullWidth
                     sx={{
@@ -146,7 +147,7 @@ const Sidebar = ({ latestBlogs, categories }: SidebarProps) => {
                   >
                     {nav.label}
                   </Button>
-                </Link>
+                </CustomLink>
                 <Divider sx={{ marginTop: "5px" }} />
               </Fragment>
             ))}

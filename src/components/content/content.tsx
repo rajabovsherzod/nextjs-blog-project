@@ -5,6 +5,7 @@ import Image from "next/image";
 import { calculateEstimatedTimeToRead } from '@/helpers/time.format';
 import Link from 'next/link';
 import { ContentProps } from "./content.props";
+import { CustomLink } from '@/components';
 
 const Content = ({ blogs, widthProps }: ContentProps) => {
   return (
@@ -16,7 +17,7 @@ const Content = ({ blogs, widthProps }: ContentProps) => {
     >
       <Box gap={'20px'}>
           {blogs.map(item => (
-            <Link key={item.id} href={`/blog/${item.slug}`}>
+            <CustomLink key={item.id} href={`/blog/${item.slug}`}>
                 <Box  sx={{ backgroundColor: 'rgba(0, 0, 0, .5)', padding: '20px', marginTop: '20px', borderRadius: '8px', boxShadow: '0px 8px 16px rgba(255, 255, 255, .1)'}}>
                 <Box position={'relative'} width={'100%'} sx={{ height: {xs: '25vh', lg: '50vh'}}}>
                     <Image src={item.image.url} alt={item.title} fill style={{ objectFit: 'cover', borderRadius: '10px'}}/>
@@ -73,7 +74,7 @@ const Content = ({ blogs, widthProps }: ContentProps) => {
                     </Box>
                   </Box>
               </Box>
-              </Link>
+              </CustomLink>
             ))}
       </Box>
     </Box>
