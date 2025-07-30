@@ -1,5 +1,6 @@
 import { create } from 'zustand'
-import { BlogsType, CategoryType } from "@/interfaces/blogs.interface";
+import { BlogsType } from "@/interfaces/blogs.interface";
+import { CategoryType } from "@/interfaces/categories.interface";
 import { devtools } from 'zustand/middleware'
 
 interface BlogStoreType {
