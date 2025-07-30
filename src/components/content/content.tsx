@@ -6,10 +6,10 @@ import { calculateEstimatedTimeToRead } from '@/helpers/time.format';
 import Link from 'next/link';
 import { ContentProps } from "./content.props";
 
-const Content = ({ blogs }: ContentProps) => {
+const Content = ({ blogs, widthProps }: ContentProps) => {
   return (
     <Box
-      sx={{width: {xs: '100%', md: '70%'}, minHeight: "5000px", marginTop: {xs: '20px', md: '0px'}}}
+      sx={{width: {xs: '100%', md: `${widthProps}`}, marginTop: {xs: '20px', md: '0px'}}}
       padding={"20px"}
       border={"1px solid gray"}
       borderRadius={"8px"}

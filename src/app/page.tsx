@@ -13,7 +13,7 @@ export default async function Home() {
         <Hero blogs={latestBlogs}/>
         <Box sx={{ display: 'flex', marginTop: '20px', flexDirection: {xs: 'column', md: 'row'}, gap: {md: '20px'}}}>
           <Sidebar latestBlogs={latestBlogs} categories={categories} />
-          <Content blogs={blogs} />
+          <Content blogs={blogs} widthProps='70%'/>
         </Box>
       </Container>
   );
