@@ -64,7 +64,17 @@ export default async function DetailedBlogPage({ params }: DetailedBlogPageProps
                             marginTop: '20px',
                         }}
                     >
-                        <Typography variant='h3' component='h1'>
+                        <Typography
+                            component='h1'
+                            sx={{
+                                fontWeight: 'bold',
+                                fontSize: {
+                                    xs: '2rem', 
+                                    sm: '2.5rem', 
+                                    md: '3rem',
+                                },
+                            }}
+                        >
                             {blog.title}
                         </Typography>
                         <Typography variant='body1' color='gray' sx={{ marginTop: '10px' }}>

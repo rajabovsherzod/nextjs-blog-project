@@ -17,13 +17,26 @@ const Content = ({ blogs, widthProps }: ContentProps) => {
     >
       <Box gap={'20px'}>
           {blogs.map(item => (
-            <CustomLink key={item.id} href={`/blog/${item.slug}`}>
+            <CustomLink key={item.id} href={`/blogs/${item.slug}`}>
                 <Box  sx={{ backgroundColor: 'rgba(0, 0, 0, .5)', padding: '20px', marginTop: '20px', borderRadius: '8px', boxShadow: '0px 8px 16px rgba(255, 255, 255, .1)'}}>
                 <Box position={'relative'} width={'100%'} sx={{ height: {xs: '25vh', lg: '50vh'}}}>
                     <Image src={item.image.url} alt={item.title} fill style={{ objectFit: 'cover', borderRadius: '10px'}}/>
                 </Box>
-                <Typography variant='h4' marginTop={'30px'}>{item.title}</Typography>
-                <Typography variant='body1' color={'gray'}>{item.excerpt}</Typography>
+                <Typography
+                            component='h1'
+                            sx={{
+                                fontWeight: 'bold',
+                                marginTop: '30px',
+                                fontSize: {
+                                    xs: '1.5rem', 
+                                    sm: '2.5rem', 
+                                    md: '2,5rem', 
+                                },
+                            }}
+                        >
+                            {item.title}
+                        </Typography>
+                <Typography sx={{ marginTop: '10px'}} variant='body1' color={'gray'}>{item.excerpt}</Typography>
                 <Divider sx={{ marginTop: '25px'}}/>
                 <Box
                     sx={{

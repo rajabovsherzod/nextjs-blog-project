@@ -23,7 +23,7 @@ const Sidebar = ({ latestBlogs, categories }: SidebarProps) => {
           </Typography>
           <Box sx={{ display: "flex", flexDirection: "column", gap: "15px" }}>
             {latestBlogs.map((item) => (
-              <CustomLink href={`/blog/${item.slug}`} key={item.title}>
+              <CustomLink href={`/blogs/${item.slug}`} key={item.title}>
                   <Fragment key={item.title}>
                 <Box
                   sx={{

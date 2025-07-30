@@ -8,7 +8,7 @@ export const navItems = [
         label: "Category"
     },
     {
-        route: "/blog",
+        route: "/blogs",
         label: "Blogs"
     }
 ]
