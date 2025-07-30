@@ -1,5 +1,6 @@
 import { request, gql } from "graphql-request";
-import { BlogsType, CategoryType } from "@/interfaces/blogs.interface";
+import { BlogsType } from "@/interfaces/blogs.interface";
+import { CategoryType } from "@/interfaces/categories.interface";
 
 const endpoint = process.env.NEXT_PUBLIC_HYGRAPH_ENDPOINT as string;
 
@@ -14,6 +15,7 @@ export const BlogService = {
           title
           description {
             text
+            html
           }
           createdAt
           image {
@@ -46,6 +48,7 @@ export const BlogService = {
           title
           description {
             text
+            html
           }
           createdAt
           image {
@@ -86,5 +89,71 @@ export const BlogService = {
       console.error('Error fetching categories:', error);
       throw error;
     }
+  },
+
+  async getDetailedBlog(slug: string) {
+    const query = gql`
+      query GetDetailedBlog($slug: String!) {
+        blog(where: { slug: $slug }) {
+          excerpt
+          id
+          slug
+          title
+          description {
+            text
+            html
+          }
+          createdAt
+          image {
+            url
+          }
+          author {
+            name
+            avatar {
+              url
+            }
+          }
+          category {
+            label
+            slug
+          }
+        }
+      }
+    `
+    const result = await request<{ blog: BlogsType}>(endpoint, query, { slug })
+    return result.blog
+  },
+
+  async getDetailedCategory(slug: string) {
+    const query = gql`
+      query GetBlogsWithCategory($slug: String!) {
+        blogs(where: {category: { slug:$slug}}) {
+          excerpt
+          id
+          slug
+          title
+          description {
+            text
+            html
+          }
+          createdAt
+          image {
+            url
+          }
+          author {
+            name
+          avatar {
+            url
+          }
+        }
+          category {
+            label
+            slug
+          }
+        }
+      }
+    `
+    const result = await request<{ blogs: BlogsType[]}>(endpoint, query, { slug })
+    return result.blogs
   }
 };

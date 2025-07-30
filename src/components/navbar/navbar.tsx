@@ -18,7 +18,7 @@ import { useState } from "react";
 import { navItems } from "@/constants/navbar-items";
 import CloseIcon from "@mui/icons-material/Close";
 import BookIcon from "@mui/icons-material/Book";
-
+import Link from "next/link";
 
 interface Props {
   window?: () => Window;
@@ -51,7 +51,11 @@ const Navbar = ({ window }: Props) => {
       <List>
         {navItems.map((item) => (
           <ListItem key={item.route} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
+            <ListItemButton
+              component={Link}
+              href={item.route}
+              sx={{ textAlign: "center" }}
+            >
               <ListItemText primary={item.label} />
             </ListItemButton>
           </ListItem>
@@ -70,7 +74,7 @@ const Navbar = ({ window }: Props) => {
         position="fixed"
         sx={{
           zIndex: (theme) => theme.zIndex.drawer + 1,
-          backgroundColor: "#141414", // Aniq rang berish
+          backgroundColor: "#141414",
         }}
       >
         <Toolbar>
@@ -99,14 +103,19 @@ const Navbar = ({ window }: Props) => {
           </Box>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (
-              <Button key={item.route} sx={{ color: "#fff" }}>
+              <Button
+                component={Link}
+                href={item.route}
+                key={item.route}
+                sx={{ color: "#fff" }}
+              >
                 {item.label}
               </Button>
             ))}
           </Box>
         </Toolbar>
       </AppBar>
-      <Toolbar /> {/* Spacer for fixed AppBar */}
+      <Toolbar />
       <nav>
         <Drawer
           container={container}

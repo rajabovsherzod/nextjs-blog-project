@@ -1,23 +1,13 @@
 "use client"
 import React, { Fragment } from "react";
 import { Box, Typography, Button, Divider, Avatar } from "@mui/material";
-import { navItems } from "../../constants/navbar-items";
-import { useQuery } from '@tanstack/react-query'
-import { BlogService } from '@/services/blog.service'
 import Image from "next/image";
+import { SidebarProps } from './sidebar.props';
+import Link from "next/link";
 
-const Sidebar = () => {
-  const { data } = useQuery({
-    queryKey: ['latest-blogs'],
-    queryFn: BlogService.getLatestBlogs,
-  })
-  const {data: categoriesData} = useQuery({
-    queryKey: ['categories'],
-    queryFn: BlogService.getCategories
-  })
-  console.log(categoriesData?.categories)
+const Sidebar = ({ latestBlogs, categories }: SidebarProps) => {
   return (
-    <Box sx={{ width: {xs: '100%', md: '30%'}}}>
+    <Box sx={{ width: {xs: '100%', md: '30%'} }}>
       <Box sx={{ position: "sticky", top: "100px" }}>
         <Box
           padding={"20px"}
@@ -31,8 +21,9 @@ const Sidebar = () => {
             Latest Blog
           </Typography>
           <Box sx={{ display: "flex", flexDirection: "column", gap: "15px" }}>
-            {data?.blogs.map((item) => (
-              <Fragment key={item.title}>
+            {latestBlogs.map((item) => (
+              <Link href={`/blog/${item.slug}`} key={item.title}>
+                  <Fragment key={item.title}>
                 <Box
                   sx={{
                     display: "flex",
@@ -133,6 +124,7 @@ const Sidebar = () => {
                   }}
                 />
               </Fragment>
+              </Link>
             ))}
           </Box>
         </Box>
@@ -141,18 +133,20 @@ const Sidebar = () => {
           <Box
             sx={{ display: "flex", flexDirection: "column", marginTop: "20px" }}
           >
-            {categoriesData?.categories.map((nav) => (
+            {categories.map((nav) => (
               <Fragment key={nav.slug}>
-                <Button
-                  fullWidth
-                  sx={{
-                    justifyContent: "flex-start",
-                    hight: "50px",
-                    color: "white",
-                  }}
-                >
-                  {nav.label}
-                </Button>
+                <Link href={`/category/${nav.slug}`}>
+                  <Button
+                    fullWidth
+                    sx={{
+                      justifyContent: "flex-start",
+                      hight: "50px",
+                      color: "white",
+                    }}
+                  >
+                    {nav.label}
+                  </Button>
+                </Link>
                 <Divider sx={{ marginTop: "5px" }} />
               </Fragment>
             ))}
@@ -164,4 +158,3 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
-

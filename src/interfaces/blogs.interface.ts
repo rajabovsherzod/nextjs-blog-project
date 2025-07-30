@@ -1,3 +1,4 @@
+import { CategoryType } from "@/interfaces/categories.interface";
 export interface BlogsType {
     excerpt: string;
     id: string;
@@ -5,6 +6,7 @@ export interface BlogsType {
     title: string;
     description: {
       text: string
+      html: string
     }
     createdAt: string;
     image: { url: string };
@@ -14,9 +16,7 @@ export interface BlogsType {
     };
     category: CategoryType
   }
+
   
-  export interface CategoryType {
-    label: string;
-    slug: string;
-  }
+
   
